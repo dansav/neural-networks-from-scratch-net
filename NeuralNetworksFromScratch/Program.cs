@@ -8,4 +8,5 @@ System.Threading.Thread.CurrentThread.CurrentCulture = System.Globalization.Cult
 
 Console.WriteLine("Neural Networks from Scratch");
 
-new Part001().Run();
+//new Part001().Run();
+new Part002().Run();
