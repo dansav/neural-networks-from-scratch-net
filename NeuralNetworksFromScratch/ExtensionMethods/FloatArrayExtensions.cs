@@ -17,7 +17,7 @@ namespace NeuralNetworksFromScratch
 
         public static float Dot(this float[] weights, float[] inputs)
         {
-            if (weights.Length != inputs.Length) throw new ArgumentException(nameof(inputs), "The length of inputs did not match the length of weights");
+            if (weights.Length != inputs.Length) throw new ArgumentException("The length of inputs did not match the length of weights", nameof(inputs));
 
             // Not (for now) optimized in any way for transparency
             var output = 0.0f;

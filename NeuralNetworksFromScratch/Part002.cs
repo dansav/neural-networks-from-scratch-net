@@ -16,7 +16,7 @@ namespace NeuralNetworksFromScratch
             AddTwoNeurons();
         }
 
-        private void RepeatPart1()
+        private static void RepeatPart1()
         {
             Console.WriteLine($"-- {nameof(RepeatPart1)}");
 
@@ -35,7 +35,7 @@ namespace NeuralNetworksFromScratch
             Console.WriteLine($"output: {output:0.0}");
         }
 
-        private void AddAnInput()
+        private static void AddAnInput()
         {
             Console.WriteLine($"-- {nameof(AddAnInput)}");
 
@@ -54,7 +54,7 @@ namespace NeuralNetworksFromScratch
             Console.WriteLine($"output: {output:0.0}");
         }
 
-        private void AddTwoNeurons()
+        private static void AddTwoNeurons()
         {
             Console.WriteLine($"--- Add two neurons");
 

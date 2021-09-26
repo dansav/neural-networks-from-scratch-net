@@ -16,7 +16,7 @@ namespace NeuralNetworksFromScratch
             UseDotProductLayerOfNeurons();
         }
 
-        private void UseBasicProgrammingConstructs()
+        private static void UseBasicProgrammingConstructs()
         {
             Console.WriteLine("-- A 'cleaner, more dynamic way'");
 
@@ -47,7 +47,7 @@ namespace NeuralNetworksFromScratch
             Console.WriteLine($"output: {layer_outputs.Dump()}");
         }
 
-        private void UseDotProductSingleNeuron()
+        private static void UseDotProductSingleNeuron()
         {
             Console.WriteLine("-- Use the dot product (simplified, single neuron)");
 
@@ -64,7 +64,7 @@ namespace NeuralNetworksFromScratch
             Console.WriteLine($"output2: {output2:0.0}");
         }
 
-        private void UseDotProductLayerOfNeurons()
+        private static void UseDotProductLayerOfNeurons()
         {
             Console.WriteLine("-- Use the dot product on a layer of neurons");
 
@@ -86,6 +86,5 @@ namespace NeuralNetworksFromScratch
             //Console.WriteLine($"outputs1: {outputs1.Dump()}");
             Console.WriteLine($"outputs2: {outputs2.Dump()}");
         }
-
     }
 }
