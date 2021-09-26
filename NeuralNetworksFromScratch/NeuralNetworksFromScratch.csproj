@@ -4,6 +4,12 @@
     <OutputType>Exe</OutputType>
     <TargetFramework>net6.0-windows</TargetFramework>
     <Nullable>enable</Nullable>
+    <UseWPF>true</UseWPF>
+    <DisableWinExeOutputInference>true</DisableWinExeOutputInference>
   </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="OxyPlot.Wpf" Version="2.1.0-Preview1" />
+  </ItemGroup>
 
 </Project>

@@ -31,6 +31,25 @@ namespace NeuralNetworksFromScratch
             return (X, y);
         }
 
+        public static (float[][] X, int[] y) GenerateVerticalData(int samples, int classes)
+        {
+            var X = Enumerable.Range(0, samples * classes).Select(i => new float[] { 0.0f, 0.0f }).ToArray();
+            var y = Enumerable.Range(0, samples * classes).Select(i => 0).ToArray();
+
+            for (int classNumber = 0; classNumber < classes; classNumber++)
+            {
+                var ix = Enumerable.Range(samples * classNumber, samples * (classNumber + 1) - samples * classNumber);
+                foreach (var x in ix)
+                {
+                    X[x][0] = RndGauss() * 0.1f + classNumber / 3f;
+                    X[x][1] = RndGauss() * 0.1f + 0.5f;
+                    y[x] = classNumber;
+                }
+            }
+
+            return (X, y);
+        }
+
         private static float[] LinSpace(float start, float end, int count)
         {
             return Enumerable
