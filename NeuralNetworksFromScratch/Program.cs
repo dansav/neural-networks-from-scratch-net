@@ -14,4 +14,5 @@ Console.WriteLine("Neural Networks from Scratch");
 //new Part004().Run();
 //new Part005().Run();
 //new Part006().Run();
-new Part007().Run();
+//new Part007().Run();
+new Part008().Run();
