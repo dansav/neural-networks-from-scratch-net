@@ -14,6 +14,11 @@ namespace NeuralNetworksFromScratch
             return outputs;
         }
 
+        public static int[] ArgMax(this float[][] values)
+        {
+            return values.Select(a => a.ArgMax()).ToArray();
+        }
+
         public static float[] Dot(this float[][] weights, float[] inputs)
         {
             // Not (for now) optimized in any way for transparency

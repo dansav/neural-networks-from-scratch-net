@@ -15,6 +15,12 @@ namespace NeuralNetworksFromScratch
             return output;
         }
 
+        public static int ArgMax(this float[] values)
+        {
+            var (max, index) = values.Select((v, i) => (v, i)).Max();
+            return index;
+        }
+
         public static float Dot(this float[] weights, float[] inputs)
         {
             if (weights.Length != inputs.Length) throw new ArgumentException("The length of inputs did not match the length of weights", nameof(inputs));
