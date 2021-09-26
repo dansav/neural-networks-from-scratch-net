@@ -62,7 +62,7 @@ namespace NeuralNetworksFromScratch
         {
             Console.WriteLine("-- Using a ReLU activation on the spiral dataset");
             
-            var (X, y) = DataGenerator.GenerateSpiralData(100, 3);
+            var (X, _) = DataGenerator.GenerateSpiralData(100, 3);
 
             var layer1 = new DenseLayer(2, 5);
             layer1.Forward(X);
