@@ -12,11 +12,11 @@ namespace NeuralNetworksFromScratch
             // https://www.youtube.com/watch?v=txh3TQDwP1g&list=PLQVvvaa0QuDcjD5BAw2DxE6OF2tius3V3&index=9
             Console.WriteLine("Part 9: Introducing Optimization and derivatives");
 
-            //TestVerticalData();
+            TestVerticalData();
 
-            //TestSpiralData();
+            TestSpiralData();
 
-            //RandomlySearchParametersForTheVerticalData();
+            RandomlySearchParametersForTheVerticalData();
 
             RandomlyTweakParametersForTheVerticalData();
 
@@ -62,10 +62,8 @@ namespace NeuralNetworksFromScratch
 
             for (int i = 0; i < 100_000; i++)
             {
-                DenseLayer.InitializeWeights(dense1, 0.05f);
-                DenseLayer.InitializeBiases(dense1, 0.05f);
-                DenseLayer.InitializeWeights(dense2, 0.05f);
-                DenseLayer.InitializeBiases(dense2, 0.05f);
+                DenseLayer.Initialize(dense1, 0.05f);
+                DenseLayer.Initialize(dense2, 0.05f);
 
                 dense1.Forward(X);
                 activation1.Forward(dense1.Output);
@@ -110,10 +108,8 @@ namespace NeuralNetworksFromScratch
 
             for (int i = 0; i < 100_000; i++)
             {
-                DenseLayer.TweakWeights(dense1, 0.05f);
-                DenseLayer.TweakBiases(dense1, 0.05f);
-                DenseLayer.TweakWeights(dense2, 0.05f);
-                DenseLayer.TweakBiases(dense2, 0.05f);
+                DenseLayer.Tweak(dense1, 0.05f);
+                DenseLayer.Tweak(dense2, 0.05f);
 
                 dense1.Forward(X);
                 activation1.Forward(dense1.Output);
@@ -136,10 +132,8 @@ namespace NeuralNetworksFromScratch
                 }
                 else
                 {
-                    DenseLayer.SetWeights(dense1, bestDense1Weights);
-                    DenseLayer.SetBiases(dense1, bestDense1Biases);
-                    DenseLayer.SetWeights(dense2, bestDense2Weights);
-                    DenseLayer.SetBiases(dense2, bestDense2Biases);
+                    DenseLayer.Set(dense1, bestDense1Weights, bestDense1Biases);
+                    DenseLayer.Set(dense2, bestDense2Weights, bestDense2Biases);
                 }
             }
         }
@@ -165,10 +159,8 @@ namespace NeuralNetworksFromScratch
 
             for (int i = 0; i < 100_000; i++)
             {
-                DenseLayer.TweakWeights(dense1, 0.05f);
-                DenseLayer.TweakBiases(dense1, 0.05f);
-                DenseLayer.TweakWeights(dense2, 0.05f);
-                DenseLayer.TweakBiases(dense2, 0.05f);
+                DenseLayer.Tweak(dense1, 0.05f);
+                DenseLayer.Tweak(dense2, 0.05f);
 
                 dense1.Forward(X);
                 activation1.Forward(dense1.Output);
@@ -191,13 +183,10 @@ namespace NeuralNetworksFromScratch
                 }
                 else
                 {
-                    DenseLayer.SetWeights(dense1, bestDense1Weights);
-                    DenseLayer.SetBiases(dense1, bestDense1Biases);
-                    DenseLayer.SetWeights(dense2, bestDense2Weights);
-                    DenseLayer.SetBiases(dense2, bestDense2Biases);
+                    DenseLayer.Set(dense1, bestDense1Weights, bestDense1Biases);
+                    DenseLayer.Set(dense2, bestDense2Weights, bestDense2Biases);
                 }
             }
         }
-
     }
 }

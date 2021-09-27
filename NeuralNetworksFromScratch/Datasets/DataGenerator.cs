@@ -1,11 +1,12 @@
-﻿using System;
+﻿using NeuralNetworksFromScratch.ExtensionMethods;
+using System;
 using System.Linq;
 
 namespace NeuralNetworksFromScratch
 {
     public static class DataGenerator
     {
-        static Random _rnd = new Random(); //reuse this if you are generating many
+        static readonly Random _rnd = new();
 
         public static (float[][] X, int[] y) GenerateSpiralData(int points, int classes)
         {
@@ -16,7 +17,7 @@ namespace NeuralNetworksFromScratch
             {
                 var ix = Enumerable.Range(points * classNumber, points * (classNumber + 1) - points * classNumber);
                 var r = LinSpace(0, 1, points); // radius
-                var t = LinSpace(classNumber * 4, (classNumber + 1) * 4, points).Select(x => x + RndGauss() * 0.2f).ToArray();
+                var t = LinSpace(classNumber * 4, (classNumber + 1) * 4, points).Select(x => x + _rnd.NextGaussSingle() * 0.2f).ToArray();
 
                 int i = 0;
                 foreach (var x in ix)
@@ -41,8 +42,8 @@ namespace NeuralNetworksFromScratch
                 var ix = Enumerable.Range(samples * classNumber, samples * (classNumber + 1) - samples * classNumber);
                 foreach (var x in ix)
                 {
-                    X[x][0] = RndGauss() * 0.1f + classNumber / 3f;
-                    X[x][1] = RndGauss() * 0.1f + 0.5f;
+                    X[x][0] = _rnd.NextGaussSingle() * 0.1f + classNumber / 3f;
+                    X[x][1] = _rnd.NextGaussSingle() * 0.1f + 0.5f;
                     y[x] = classNumber;
                 }
             }
@@ -54,27 +55,8 @@ namespace NeuralNetworksFromScratch
         {
             return Enumerable
                 .Range(0, count)
-                .Select(i => start + (end - start) * (float)i / (count - 1))
+                .Select(i => start + (end - start) * i / (count - 1f))
                 .ToArray();
-        }
-
-        /// <summary>
-        /// Obtains normally (Gaussian) distributed random numbers, using the Box-Muller
-        /// transformation.  This transformation takes two uniformly distributed deviates
-        /// within the unit circle, and transforms them into two independently distributed normal deviates.
-        /// </summary>
-        /// <returns></returns>
-        private static float RndGauss()
-        {
-            float u1 = 1.0f - _rnd.NextSingle(); //uniform(0,1] random doubles
-            float u2 = 1.0f - _rnd.NextSingle();
-            return MathF.Sqrt(-2.0f * MathF.Log(u1))
-                * MathF.Sin(2.0f * MathF.PI * u2); //random normal(0,1)
-        }
-
-        private static float[] RndGauss(int count)
-        {
-            return Enumerable.Range(0, count).Select(i => RndGauss()).ToArray();
         }
     }
 }
